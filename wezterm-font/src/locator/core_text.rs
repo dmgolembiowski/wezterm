@@ -166,8 +166,12 @@ fn build_fallback_list() -> Vec<ParsedFont> {
 }
 
 fn build_fallback_list_impl() -> anyhow::Result<Vec<ParsedFont>> {
-    let menlo =
+    /*let menlo =
         new_from_name("Menlo", 0.0).map_err(|_| anyhow::anyhow!("failed to get Menlo font"))?;
+    */
+    let hack =
+        new_from_name("Hack", 0.0).map_err(|_| anyhow::anyhow!("failed to get Hack font"))?;
+
     let lang = "en"
         .parse::<CFString>()
         .map_err(|_| anyhow::anyhow!("failed to parse lang name en as CFString"))?;
@@ -187,7 +191,7 @@ fn build_fallback_list_impl() -> anyhow::Result<Vec<ParsedFont>> {
     // In particular, `.AppleSymbolsFB` is one such font.  Let's try
     // a nearby approximation.
     let symbols = FontAttributes {
-        family: "Apple Symbols".to_string(),
+        family: "Meslo".to_string(),
         weight: FontWeight::REGULAR,
         stretch: FontStretch::Normal,
         style: FontStyle::Normal,

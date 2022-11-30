@@ -27,12 +27,13 @@ fn main() -> Result<()> {
 
         parser.parse(&buf[0..len], |action| match action {
             Action::Print(c) => print!("{}", c),
-            Action::Control(c) => match c {
+            Action::Control(c) => print!("{}", c as u8 as char),
+            /*Action::Control(c) => match c {
                 ControlCode::HorizontalTab
                 | ControlCode::LineFeed
                 | ControlCode::CarriageReturn => print!("{}", c as u8 as char),
                 _ => {}
-            },
+            },*/
             _ => {}
         });
     }
